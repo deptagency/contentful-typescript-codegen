@@ -1,9 +1,9 @@
-import { Locale } from "contentful"
+import { Locale } from "contentful-management"
 import format from "../../support/format"
 import renderDefaultLocale from "../../../src/renderers/contentful/renderDefaultLocale"
 
 describe("renderSymbol()", () => {
-  const locales: Locale[] = [
+  const locales = [
     {
       name: "English (US)",
       fallbackCode: null,
@@ -18,7 +18,7 @@ describe("renderSymbol()", () => {
       default: false,
       sys: {} as Locale["sys"],
     },
-  ]
+  ] as Locale[]
 
   it("works with a list of locales", () => {
     expect(format(renderDefaultLocale(locales))).toMatchInlineSnapshot(
@@ -34,7 +34,7 @@ describe("renderSymbol()", () => {
       default: false,
       sys: {} as Locale["sys"],
     },
-  ]
+  ] as Locale[]
 
   it("throws an error when there is no default", () => {
     expect(() => {

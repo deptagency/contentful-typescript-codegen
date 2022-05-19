@@ -1,8 +1,8 @@
 import renderNumber from "../../../../src/renderers/contentful/fields/renderNumber"
-import { Field } from "contentful"
+import { ContentFields } from "contentful-management"
 
 describe("renderNumber()", () => {
-  const simpleNumber: Field = {
+  const simpleNumber: ContentFields = {
     type: "Number",
     id: "fieldId",
     name: "Field Name",

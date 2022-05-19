@@ -1,9 +1,9 @@
 import renderLink from "../../../../src/renderers/contentful-fields-only/fields/renderLink"
-import { Field } from "contentful"
+import { ContentFields } from "contentful-management"
 
 describe("renderLink()", () => {
   it("renders a simple entry link", () => {
-    const simpleEntryLink: Field = {
+    const simpleEntryLink: ContentFields = {
       id: "validatedEntryLink",
       name: "Entry Link",
       type: "Link",
@@ -19,7 +19,7 @@ describe("renderLink()", () => {
   })
 
   it("renders a link with validations", () => {
-    const validatedEntryLink: Field = {
+    const validatedEntryLink: ContentFields = {
       id: "validatedEntryLink",
       name: "Entry Link",
       type: "Link",
@@ -35,7 +35,7 @@ describe("renderLink()", () => {
   })
 
   it("renders an asset link", () => {
-    const assetLink: Field = {
+    const assetLink: ContentFields = {
       id: "assetLink",
       name: "Asset Link",
       type: "Link",
@@ -51,7 +51,7 @@ describe("renderLink()", () => {
   })
 
   it("handles mysteries", () => {
-    const mysteryLink: Field = {
+    const mysteryLink: ContentFields = {
       id: "mysteryLink",
       name: "Mystery Link",
       type: "Link",

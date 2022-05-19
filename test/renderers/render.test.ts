@@ -1,12 +1,12 @@
 import render from "../../src/renderers/render"
-import { ContentType, Sys, Locale } from "contentful"
+import { ContentType, Locale } from "contentful-management"
 
 describe("render()", () => {
   const contentTypes: ContentType[] = [
     {
       sys: {
         id: "myContentType",
-      } as Sys,
+      },
       fields: [
         {
           id: "arrayField",
@@ -30,8 +30,7 @@ describe("render()", () => {
       description: "",
       displayField: "",
       name: "",
-      toPlainObject: () => ({} as ContentType),
-    },
+    } as ContentType,
   ]
 
   const locales: Locale[] = [
@@ -41,14 +40,14 @@ describe("render()", () => {
       code: "en-US",
       default: true,
       sys: {} as Locale["sys"],
-    },
+    } as Locale,
     {
       name: "Brazilian Portuguese",
       fallbackCode: "en-US",
       code: "pt-BR",
       default: false,
       sys: {} as Locale["sys"],
-    },
+    } as Locale,
   ]
 
   it("renders a given content type", async () => {
@@ -94,7 +93,7 @@ describe("render()", () => {
       {
         sys: {
           id: "myContentType",
-        } as Sys,
+        },
         fields: [
           {
             id: "arrayField",
@@ -118,8 +117,7 @@ describe("render()", () => {
         description: "",
         displayField: "",
         name: "",
-        toPlainObject: () => ({} as ContentType),
-      },
+      } as ContentType,
     ]
 
     expect(await render(contentTypes, locales, { localization: true })).toMatchInlineSnapshot(`

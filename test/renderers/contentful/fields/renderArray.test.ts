@@ -1,9 +1,9 @@
 import renderArray from "../../../../src/renderers/contentful/fields/renderArray"
-import { Field } from "contentful"
+import { ContentFields } from "contentful-management"
 
 describe("renderArray()", () => {
   it("renders an array of symbols", () => {
-    const arrayOfSymbols: Field = {
+    const arrayOfSymbols: ContentFields = {
       type: "Array",
       id: "fieldId",
       name: "Field Name",
@@ -23,7 +23,7 @@ describe("renderArray()", () => {
   })
 
   it("renders an array of symbols with validations", () => {
-    const arrayOfValidatedSymbols: Field = {
+    const arrayOfValidatedSymbols: ContentFields = {
       type: "Array",
       id: "fieldId",
       name: "Field Name",
@@ -45,7 +45,7 @@ describe("renderArray()", () => {
   })
 
   it("renders an array of links of a particular type", () => {
-    const arrayOfValidatedSymbols: Field = {
+    const arrayOfValidatedSymbols: ContentFields = {
       type: "Array",
       id: "fieldId",
       name: "Field Name",

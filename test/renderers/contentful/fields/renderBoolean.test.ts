@@ -1,8 +1,8 @@
 import renderBoolean from "../../../../src/renderers/contentful/fields/renderBoolean"
-import { Field } from "contentful"
+import { ContentFields } from "contentful-management"
 
 describe("renderSymbol()", () => {
-  const simpleBoolean: Field = {
+  const simpleBoolean: ContentFields = {
     type: "Boolean",
     id: "fieldId",
     name: "Field Name",

@@ -1,8 +1,8 @@
 import renderObject from "../../../../src/renderers/contentful/fields/renderObject"
-import { Field } from "contentful"
+import { ContentFields } from "contentful-management"
 
 describe("renderObject()", () => {
-  const simpleObject: Field = {
+  const simpleObject: ContentFields = {
     type: "Object",
     id: "fieldId",
     name: "Field Name",

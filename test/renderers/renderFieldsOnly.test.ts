@@ -1,12 +1,12 @@
 import renderFieldsOnly from "../../src/renderers/renderFieldsOnly"
-import { ContentType, Sys } from "contentful"
+import { ContentType } from "contentful-management"
 
 describe("renderFieldsOnly()", () => {
   const contentTypes: ContentType[] = [
     {
       sys: {
         id: "myContentType",
-      } as Sys,
+      },
       fields: [
         {
           id: "arrayField",
@@ -30,8 +30,7 @@ describe("renderFieldsOnly()", () => {
       description: "",
       displayField: "",
       name: "",
-      toPlainObject: () => ({} as ContentType),
-    },
+    } as ContentType,
   ]
 
   it("renders a given content type", async () => {

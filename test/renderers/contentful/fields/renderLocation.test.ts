@@ -1,8 +1,8 @@
 import renderLocation from "../../../../src/renderers/contentful/fields/renderLocation"
-import { Field } from "contentful"
+import { ContentFields } from "contentful-management"
 
 describe("renderLocation()", () => {
-  const simpleLocation: Field = {
+  const simpleLocation: ContentFields = {
     type: "Location",
     id: "fieldId",
     name: "Field Name",

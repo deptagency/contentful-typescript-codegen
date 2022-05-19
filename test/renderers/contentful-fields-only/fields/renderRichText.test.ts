@@ -1,8 +1,8 @@
 import renderRichText from "../../../../src/renderers/contentful-fields-only/fields/renderRichText"
-import { Field } from "contentful"
+import { ContentFields } from "contentful-management"
 
 describe("renderRichText()", () => {
-  const simpleRichText: Field = {
+  const simpleRichText: ContentFields = {
     type: "Object",
     id: "fieldId",
     name: "Field Name",

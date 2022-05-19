@@ -1,12 +1,12 @@
 import renderContentType from "../../../src/renderers/contentful-fields-only/renderContentType"
-import { ContentType, Sys } from "contentful"
+import { ContentType } from "contentful-management"
 import format from "../../support/format"
 
 describe("renderContentType()", () => {
-  const contentType: ContentType = {
+  const contentType = {
     sys: {
       id: "myContentType",
-    } as Sys,
+    },
     fields: [
       {
         id: "symbolField",
@@ -40,8 +40,7 @@ describe("renderContentType()", () => {
     description: "",
     displayField: "",
     name: "",
-    toPlainObject: () => ({} as ContentType),
-  }
+  } as ContentType
 
   it("works with miscellaneous field types", () => {
     expect(format(renderContentType(contentType))).toMatchInlineSnapshot(`

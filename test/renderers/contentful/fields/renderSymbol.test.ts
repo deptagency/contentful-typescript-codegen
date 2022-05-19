@@ -1,8 +1,8 @@
 import renderSymbol from "../../../../src/renderers/contentful/fields/renderSymbol"
-import { Field } from "contentful"
+import { ContentFields } from "contentful-management"
 
 describe("renderSymbol()", () => {
-  const simpleString: Field = {
+  const simpleString: ContentFields = {
     type: "Symbol",
     validations: [],
     id: "fieldId",
@@ -14,7 +14,7 @@ describe("renderSymbol()", () => {
     localized: false,
   }
 
-  const stringWithValidations: Field = {
+  const stringWithValidations: ContentFields = {
     type: "Symbol",
     validations: [{ in: ["one", "or", "the", "other"] }],
     id: "fieldId",
