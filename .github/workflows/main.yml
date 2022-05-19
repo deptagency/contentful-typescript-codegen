@@ -1,0 +1,26 @@
+name: Tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Use Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - run: yarn install
+
+      - name: Check format
+        run: yarn format:check
+
+      - name: Run linter
+        run: yarn lint
+
+      - run: yarn build
+
+      - name: Run tests
+        run: yarn test:ci
