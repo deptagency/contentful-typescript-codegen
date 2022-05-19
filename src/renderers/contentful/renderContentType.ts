@@ -1,4 +1,5 @@
-import { ContentType, Field, FieldType, Sys } from "contentful"
+import { FieldType } from "contentful"
+import { ContentType, ContentFields } from "contentful-management"
 
 import renderInterface from "../typescript/renderInterface"
 import renderField from "./renderField"
@@ -34,11 +35,11 @@ function descriptionComment(description: string | undefined) {
   return ""
 }
 
-function renderContentTypeFields(fields: Field[], localization: boolean): string {
+function renderContentTypeFields(fields: ContentFields[], localization: boolean): string {
   return fields
     .filter(field => !field.omitted)
     .map<string>(field => {
-      const functionMap: Record<FieldType, (field: Field) => string> = {
+      const functionMap: Record<FieldType, (field: ContentFields) => string> = {
         Array: renderArray,
         Boolean: renderBoolean,
         Date: renderSymbol,
@@ -52,12 +53,12 @@ function renderContentTypeFields(fields: Field[], localization: boolean): string
         Text: renderSymbol,
       }
 
-      return renderField(field, functionMap[field.type](field), localization)
+      return renderField(field, functionMap[field.type as FieldType](field), localization)
     })
     .join("\n\n")
 }
 
-function renderSys(sys: Sys) {
+function renderSys(sys: ContentType["sys"]) {
   return `
     sys: {
       id: string;

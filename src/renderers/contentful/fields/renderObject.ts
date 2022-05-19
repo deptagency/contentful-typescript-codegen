@@ -1,5 +1,5 @@
-import { Field } from "contentful"
+import { ContentFields } from "contentful-management"
 
-export default function renderObject(field: Field): string {
+export default function renderObject(field: ContentFields): string {
   return "Record<string, any>"
 }

@@ -1,4 +1,4 @@
-import { ContentType, Locale } from "contentful"
+import { ContentType, Locale } from "contentful-management"
 
 import { format, resolveConfig } from "prettier"
 

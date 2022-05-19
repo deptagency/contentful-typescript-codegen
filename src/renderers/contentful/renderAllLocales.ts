@@ -1,5 +1,5 @@
 import renderUnion from "../typescript/renderUnion"
-import { Locale } from "contentful"
+import { Locale } from "contentful-management"
 
 export default function renderAllLocales(locales: Locale[]): string {
   return renderUnion(

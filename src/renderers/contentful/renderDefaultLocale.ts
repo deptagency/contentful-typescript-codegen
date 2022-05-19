@@ -1,4 +1,4 @@
-import { Locale } from "contentful"
+import { Locale } from "contentful-management"
 
 export default function renderDefaultLocale(locales: Locale[]): string {
   const defaultLocale = locales.find(locale => locale.default)

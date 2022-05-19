@@ -1,14 +1,14 @@
-import { Field } from "contentful"
 import renderSymbol from "../../contentful/fields/renderSymbol"
 import renderLink from "../../contentful-fields-only/fields/renderLink"
 import renderArrayOf from "../../typescript/renderArrayOf"
+import { ContentFields } from "contentful-management"
 
-export default function renderArray(field: Field): string {
+export default function renderArray(field: ContentFields): string {
   if (!field.items) {
     throw new Error(`Cannot render non-array field ${field.id} as an array`)
   }
 
-  const fieldWithValidations: Field = {
+  const fieldWithValidations: ContentFields = {
     ...field,
     linkType: field.items.linkType,
     validations: field.items.validations || [],

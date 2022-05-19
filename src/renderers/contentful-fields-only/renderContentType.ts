@@ -1,4 +1,4 @@
-import { ContentType, Field, FieldType } from "contentful"
+import { FieldType } from "contentful"
 
 import renderInterface from "../typescript/renderInterface"
 import renderField from "../contentful/renderField"
@@ -13,6 +13,7 @@ import renderLocation from "../contentful/fields/renderLocation"
 import renderNumber from "../contentful/fields/renderNumber"
 import renderObject from "../contentful/fields/renderObject"
 import renderSymbol from "../contentful/fields/renderSymbol"
+import { ContentType, ContentFields } from "contentful-management"
 
 export default function renderContentType(contentType: ContentType): string {
   const name = renderContentTypeId(contentType.sys.id)
@@ -27,11 +28,11 @@ export default function renderContentType(contentType: ContentType): string {
   })
 }
 
-function renderContentTypeFields(fields: Field[]): string {
+function renderContentTypeFields(fields: ContentFields[]): string {
   return fields
     .filter(field => !field.omitted)
     .map<string>(field => {
-      const functionMap: Record<FieldType, (field: Field) => string> = {
+      const functionMap: Record<FieldType, (field: ContentFields) => string> = {
         Array: renderArray,
         Boolean: renderBoolean,
         Date: renderSymbol,
@@ -45,7 +46,7 @@ function renderContentTypeFields(fields: Field[]): string {
         Text: renderSymbol,
       }
 
-      return renderField(field, functionMap[field.type](field))
+      return renderField(field, functionMap[field.type as FieldType](field))
     })
     .join("\n\n")
 }
