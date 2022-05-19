@@ -1,5 +1,11 @@
 # contentful-typescript-codegen
 
+Forked from [intercom/contentful-typescript-codegen](https://github.com/intercom/contentful-typescript-codegen) to add the following:
+
+- package updates, as recommended by `npm audit`
+- This PR: https://github.com/intercom/contentful-typescript-codegen/pull/35
+- A change to tsconfig, removing `declarationDir`. This makes it easier to consume this package from other libraries.
+
 Generate typings from your Contentful environment.
 
 - Content Types become interfaces.
