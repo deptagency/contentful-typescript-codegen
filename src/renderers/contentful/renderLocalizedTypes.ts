@@ -51,6 +51,10 @@ export default function renderLocalizedTypes(localization: boolean) {
       ? SpecificLocale<Entry<E>>
       : T extends Array<Entry<infer E>>
       ? Array<SpecificLocale<Entry<E>>>
+      : T extends Asset
+      ? SpecificLocale<Asset>
+      : T extends Array<Asset>
+      ? Array<SpecificLocale<Asset>>
       : T;
 
     export type SpecificLocale<T extends { fields: any }> = Omit<T, "fields"> & {
