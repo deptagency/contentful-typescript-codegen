@@ -178,6 +178,22 @@ describe("render()", () => {
         }
         toPlainObject(): object
       }
+
+      // When you specify a locale in contentful \`client.getEntries\`, the shape of the
+      // return value is different. This adapter class unwraps LocalizedField<T> and
+      // DefaultLocalizedField<T> to just T. There are also versions for ISomethingFields
+      // and Entry<ISomethingFields>
+      export type SpecificLocaleField<T> = T extends LocalizedField<infer F>
+        ? F
+        : T extends DefaultLocalizedField<infer F>
+        ? F
+        : T
+
+      export type SpecificLocaleFields<T> = { [k in keyof T]: SpecificLocaleField<T[k]> }
+
+      export type SpecificLocale<T extends { fields: any }> = Omit<T, \\"fields\\"> & {
+        fields: SpecificLocaleFields<T[\\"fields\\"]>
+      }
       "
     `)
   })
