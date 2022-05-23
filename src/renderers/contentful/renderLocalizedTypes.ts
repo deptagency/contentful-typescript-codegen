@@ -32,12 +32,26 @@ export default function renderLocalizedTypes(localization: boolean) {
     // return value is different. This adapter class unwraps LocalizedField<T> and
     // DefaultLocalizedField<T> to just T. There are also versions for ISomethingFields
     // and Entry<ISomethingFields>
-    export type SpecificLocaleField<T> = (
-      T extends LocalizedField<infer F> ? F :
-      T extends DefaultLocalizedField<infer F> ? F :
-      T);
+    export type SpecificLocaleField<T> = T extends LocalizedField<infer F>
+      ? SpecificLocaleMaybeEntry<F>
+      : T extends DefaultLocalizedField<infer F>
+      ? SpecificLocaleMaybeEntry<F>
+      : T;
 
-    export type SpecificLocaleFields<T> = { [k in keyof T]: SpecificLocaleField<T[k]> }
+    export type SpecificLocaleFields<T> = {
+      [k in keyof T]: SpecificLocaleField<T[k]>;
+    };
+
+    // when a content type refers to another content type with nested
+    // entries or a reference field, we need to unwrap the nested
+    // locales too.
+    type SpecificLocaleMaybeEntry<T> = T extends Entry<infer E>
+      ? SpecificLocale<Entry<E>>
+      : T extends Entry<infer E>
+      ? SpecificLocale<Entry<E>>
+      : T extends Array<Entry<infer E>>
+      ? Array<SpecificLocale<Entry<E>>>
+      : T;
 
     export type SpecificLocale<T extends { fields: any }> = Omit<T, "fields"> & {
       fields: SpecificLocaleFields<T["fields"]>;
