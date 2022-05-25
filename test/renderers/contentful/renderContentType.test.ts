@@ -52,7 +52,7 @@ describe("renderContentType()", () => {
     name: "",
   } as ContentType
 
-  const contentTypeWithDescription = ({
+  const contentTypeWithDescription = {
     sys: {
       id: "myContentType",
     },
@@ -60,38 +60,38 @@ describe("renderContentType()", () => {
     description: "This is a description",
     displayField: "",
     name: "",
-  } as unknown) as ContentType
+  } as unknown as ContentType
 
   it("works with miscellaneous field types", () => {
     expect(format(renderContentType(contentType, false))).toMatchInlineSnapshot(`
-            "export interface IMyContentTypeFields {
-              /** Symbol Field™ */
-              symbolField?: string | undefined;
+      "export interface IMyContentTypeFields {
+        /** Symbol Field™ */
+        symbolField?: string | undefined;
 
-              /** Localized Symbol Field™ */
-              localizedSymbolField: string;
+        /** Localized Symbol Field™ */
+        localizedSymbolField: string;
 
-              /** Array field */
-              arrayField: (\\"one\\" | \\"of\\" | \\"the\\" | \\"above\\")[];
-            }
+        /** Array field */
+        arrayField: (\\"one\\" | \\"of\\" | \\"the\\" | \\"above\\")[];
+      }
 
-            export interface IMyContentType extends Entry<IMyContentTypeFields> {
-              sys: {
-                id: string,
-                type: string,
-                createdAt: string,
-                updatedAt: string,
-                locale: string,
-                contentType: {
-                  sys: {
-                    id: \\"myContentType\\",
-                    linkType: \\"ContentType\\",
-                    type: \\"Link\\"
-                  }
-                }
-              };
-            }"
-        `)
+      export interface IMyContentType extends Entry<IMyContentTypeFields> {
+        sys: {
+          id: string,
+          type: string,
+          createdAt: string,
+          updatedAt: string,
+          locale: string,
+          contentType: {
+            sys: {
+              id: \\"myContentType\\",
+              linkType: \\"ContentType\\",
+              type: \\"Link\\",
+            },
+          },
+        };
+      }"
+    `)
   })
 
   it("supports descriptions", () => {
@@ -111,9 +111,9 @@ describe("renderContentType()", () => {
             sys: {
               id: \\"myContentType\\",
               linkType: \\"ContentType\\",
-              type: \\"Link\\"
-            }
-          }
+              type: \\"Link\\",
+            },
+          },
         };
       }"
     `)
@@ -143,9 +143,9 @@ describe("renderContentType()", () => {
             sys: {
               id: \\"myContentType\\",
               linkType: \\"ContentType\\",
-              type: \\"Link\\"
-            }
-          }
+              type: \\"Link\\",
+            },
+          },
         };
       }"
     `)
